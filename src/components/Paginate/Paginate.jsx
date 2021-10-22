@@ -1,7 +1,8 @@
 import React from 'react'
-import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import { NavLink } from 'react-router-dom';
+import { Pagination, PaginationItem} from 'reactstrap';
 
-const Pages = ({postPerPage, totalPosts, paginate}) => {
+const Paginate = ({postPerPage, totalPosts, pagination}) => {
     const pageNum = []
 
     for (let i = 1; i <= Math.round(totalPosts / postPerPage); i++) {
@@ -13,9 +14,9 @@ const Pages = ({postPerPage, totalPosts, paginate}) => {
             {
                 pageNum.map(number => (
                     <PaginationItem key={number}>
-                        <PaginationLink href={number} onClick={() => paginate(number)}>
+                        <NavLink to={"/" + number} onClick={() => pagination(number)}>
                             {number}
-                        </PaginationLink>
+                        </NavLink>
                     </PaginationItem>
                 ))
             }
@@ -23,4 +24,4 @@ const Pages = ({postPerPage, totalPosts, paginate}) => {
     )
 }
 
-export default Pages
+export default Paginate

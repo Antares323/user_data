@@ -1,10 +1,10 @@
 import axios from 'axios';
-import React, {useState, useEffect} from 'react'
-import { 
-  Container
-  } from 'reactstrap';
-import Pages from './components/Pages/Pages';
-import Posts from './components/Posts/Posts';
+import React, { useState, useEffect } from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Container } from 'reactstrap';
+import Paginate from './components/Paginate/Paginate';
+import View from './components/PostsTable/Actions/View/View';
+import PostTable from './components/PostsTable/PostTable';
 
 function App() {
   const [posts, setPosts] = useState([])
@@ -38,21 +38,45 @@ function App() {
     setPosts(sortiration)
   }
 
+  const viewPost = (dataPostId) => {
+    
+  }
+
+  const editePost = (dataPostId, title) => {
+    setPosts(posts.map((e) => e.id === dataPostId ? {...e, title: e.title + ' ' + title} : e))
+  }
+
+  const deletePost = (dataPostId, person, comment) => {
+    setPosts(posts.map((e) => e.id === dataPostId ? {...e, title: e.title + ` Was deleted ${person} ` + comment} : e))
+  }
+
   return (
-    <Container>
-      <h1>List Posts</h1>
-      <Posts 
-        posts={currentUsers} 
-        loading={loading}
-        sortTable={sortData}
-        quantyPosts={quantyPosts}
-      />
-      <Pages
-        postPerPage={postPerPage}
-        totalPosts={posts.length}
-        pagination={paginate}
-      />
-    </Container>
+    <BrowserRouter>
+      <Container>
+        <h1>List Posts</h1>
+        <Switch>
+          <Route path="/">
+            <PostTable 
+              dataPost={currentUsers} 
+              loading={loading}
+              sortTable={sortData}
+              quantyPosts={quantyPosts}
+              viewPost={viewPost}
+              editePost={editePost}
+              deletePost={deletePost}
+            />
+            <Paginate
+              postPerPage={postPerPage}
+              totalPosts={posts.length}
+              pagination={paginate}
+            />
+          </Route>
+          <Route path="/page">
+            <View/>
+          </Route>
+        </Switch>
+      </Container>
+    </BrowserRouter>
   );
 }
 
