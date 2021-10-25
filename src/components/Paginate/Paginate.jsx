@@ -19,7 +19,7 @@ const Paginate = ({postPerPage, totalPosts, pagination, currentPage}) => {
                 <PaginationLink
                     previous
                     href="#"
-                    onClick={() => {currentPage < 1 ? pagination(currentPage - 1) : currentPage = 2}}
+                    onClick={() => {currentPage > 1 ? pagination(currentPage - 1) : currentPage = 1}}
                 />
             </PaginationItem>
             {
@@ -35,7 +35,7 @@ const Paginate = ({postPerPage, totalPosts, pagination, currentPage}) => {
                 <PaginationLink
                     next
                     href="#"
-                    onClick={() => currentPage > pageNum.length ? pagination(currentPage + 1) : currentPage = pageNum.length}
+                    onClick={() => currentPage < pageNum.length ? pagination(currentPage + 1) : currentPage = pageNum.length -1}
                 />
                 </PaginationItem>
                 <PaginationItem>

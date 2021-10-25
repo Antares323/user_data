@@ -4,11 +4,10 @@ import { Media } from 'reactstrap'
 
 const View = (props) => {
     const location = useLocation()
-    console.log(location)
 
     const viewData = () => {
         <div>
-            <h1>{location}</h1>
+            <h1>{location.state.title}</h1>
         </div>
     }
     

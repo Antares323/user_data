@@ -35,9 +35,9 @@ const Posts = ({dataPost, editePost, sortTable, quantyPosts, deletePost}) => {
                         <th>Actions</th>
                     </tr>
                 </thead>
-                {
-                    dataPost.map(post => (
-                        <tbody>
+                <tbody>
+                    {
+                        dataPost.map(post => (
                             <tr key={post.id}>
                                 <th scope="row">{post.id}</th>
                                 <td>{post.title}</td>
@@ -46,7 +46,7 @@ const Posts = ({dataPost, editePost, sortTable, quantyPosts, deletePost}) => {
                                     <Col>
                                         <Link to={{
                                             pathname: '/post/' + post.id,
-                                            propsSearch: {
+                                            state: {
                                                 title: post.title,
                                                 text: post.body
                                             }
@@ -58,9 +58,9 @@ const Posts = ({dataPost, editePost, sortTable, quantyPosts, deletePost}) => {
                                     <DeleteModals title='Delete Modal' deletePost={deletePost} postId={post.id}/>
                                 </td>
                             </tr>
-                        </tbody>
-                    ))
-                }
+                        ))
+                    }
+                </tbody>
             </Table> 
 
             
