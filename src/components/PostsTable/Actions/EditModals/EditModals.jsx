@@ -25,6 +25,8 @@ const EditModals = ({title, editePost, postId}) => {
             case 'title':
                 setTextDirty(true)
                 break
+            default:
+                break
         }
     }
 

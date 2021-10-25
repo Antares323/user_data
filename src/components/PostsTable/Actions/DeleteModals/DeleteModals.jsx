@@ -28,6 +28,9 @@ const DeleteModals = ({title, deletePost, postId}) => {
                 break
             case 'comment':
                 setCommentDirty(true)
+                break
+            default: 
+                break
         }
     }
 

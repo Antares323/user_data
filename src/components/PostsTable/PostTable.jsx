@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Col, FormGroup, Input, Label, Media, Table } from 'reactstrap'
+import { Col, FormGroup, Input, Label, Table } from 'reactstrap'
 import DeleteModals from './Actions/DeleteModals/DeleteModals'
 import EditModals from './Actions/EditModals/EditModals'
 import View from './Actions/View/View'
