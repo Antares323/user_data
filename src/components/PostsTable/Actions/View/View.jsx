@@ -1,28 +1,14 @@
-import React, { useState } from 'react'
-import { useLocation} from 'react-router'
-import { Media } from 'reactstrap'
+import React from 'react'
 
-const View = (props) => {
-    const location = useLocation()
-    const [title, setTitle] = useState()
+const View = (props) => {    
+    const title = props.location.state.title
+    const text = props.location.state.text
 
-    // setTitle(location)
-
-    const viewData = () => {
-        {console.log(location)}
-        <div>
-            <h1>{location.pathname}</h1>
-        </div>
-    }
-    
     return (
         <>
-            <Media
-                onClick={() => {viewData()}} 
-                object
-                src='/img/view-icon.png'
-            />
+            <h2>Info of this post</h2>
             <h3>{title}</h3>
+            <p>{text}</p>
         </>
     )
 }

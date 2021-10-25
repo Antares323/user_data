@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom'
-import { Col, FormGroup, Input, Label, Table } from 'reactstrap'
+import { Col, FormGroup, Input, Label, Table, Media } from 'reactstrap'
 import DeleteModals from './Actions/DeleteModals/DeleteModals'
 import EditModals from './Actions/EditModals/EditModals'
-import View from './Actions/View/View'
 
-const Posts = ({dataPost, editePost, sortTable, quantyPosts, deletePost}) => {
+const Posts = ({dataPost, editePost, sortTable, quantyPosts, deletePost, viewPost}) => {
     return (
         <div>
             <FormGroup row className="d-flex mb-3">
@@ -45,13 +44,16 @@ const Posts = ({dataPost, editePost, sortTable, quantyPosts, deletePost}) => {
                                 <td className='d-flex'>
                                     <Col>
                                         <Link to={{
-                                            pathname: '/post/' + post.id,
+                                            pathname: `/post/${post.id}`,
                                             state: {
                                                 title: post.title,
                                                 text: post.body
                                             }
                                         }}>
-                                            <View />
+                                            <Media
+                                                object
+                                                src='/img/view-icon.png'
+                                            />
                                         </Link>
                                     </Col>
                                     <EditModals title='Edite Modal' editePost={editePost} postId={post.id}/>

@@ -49,26 +49,26 @@ const MainPage = () => {
     const deletePost = (dataPostId, person, comment) => {
         setPosts(posts.map((e) => e.id === dataPostId ? {...e, title: e.title + ` Was deleted ${person} ` + comment} : e))
     }
-        return (
-            <div>
-                <h1>List Posts</h1>
-                <PostTable 
-                    dataPost={currentUsers} 
-                    loading={loading}
-                    sortTable={sortData}
-                    quantyPosts={quantyPosts}
-                    viewPost={viewPost}
-                    editePost={editePost}
-                    deletePost={deletePost}
-                />
-                <Paginate
-                    postPerPage={postPerPage}
-                    totalPosts={posts.length}
-                    pagination={paginate}
-                    currentPage={currentPage}
-                />
-            </div>
-        )
-    }
+    return (
+        <div>
+            <h1>List Posts</h1>
+            <PostTable 
+                dataPost={currentUsers} 
+                loading={loading}
+                sortTable={sortData}
+                quantyPosts={quantyPosts}
+                viewPost={viewPost}
+                editePost={editePost}
+                deletePost={deletePost}
+            />
+            <Paginate
+                postPerPage={postPerPage}
+                totalPosts={posts.length}
+                pagination={paginate}
+                currentPage={currentPage}
+            />
+        </div>
+    )
+}
 
 export default MainPage
