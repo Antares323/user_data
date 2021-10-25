@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, useHistory } from 'react-router-dom';
 import { Container } from 'reactstrap';
 import Paginate from './components/Paginate/Paginate';
 import View from './components/PostsTable/Actions/View/View';
@@ -38,8 +38,10 @@ function App() {
     setPosts(sortiration)
   }
 
+  const history = useHistory()
+
   const viewPost = (dataPostId) => {
-    
+    history.push('/post/' + dataPostId)
   }
 
   const editePost = (dataPostId, title) => {
@@ -69,9 +71,10 @@ function App() {
               postPerPage={postPerPage}
               totalPosts={posts.length}
               pagination={paginate}
+              currentPage={currentPage}
             />
           </Route>
-          <Route path="/page">
+          <Route exact path="/post/:data">
             <View/>
           </Route>
         </Switch>
